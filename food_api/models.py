@@ -9,6 +9,9 @@ class LoaiMonAn(models.Model):
     def __str__(self):
         return self.ten_loai
 
+    class Meta:
+        db_table = 'loai_mon_an'  # Tên collection trong MongoDB
+
 class VungMien(models.Model):
     ten_vung = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
@@ -18,7 +21,10 @@ class VungMien(models.Model):
 
     def __str__(self):
         return self.ten_vung
-    
+
+    class Meta:
+        db_table = 'vung_mien'  # Tên collection trong MongoDB
+
 class MonAn(models.Model):
     ten_mon_an = models.CharField(max_length=255)
     ten_mon_an_en = models.CharField(max_length=255, blank=True, null=True)
@@ -36,3 +42,6 @@ class MonAn(models.Model):
 
     def __str__(self):
         return self.ten_mon_an
+
+    class Meta:
+        db_table = 'mon_an'  # Tên collection trong MongoDB

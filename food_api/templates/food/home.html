@@ -1,0 +1,17 @@
+{% extends 'food/base.html' %}
+
+{% block content %}
+    <h1>Các món ăn nổi bật</h1>
+    <ul>
+        {% for mon_an in mon_an_noi_bat %}
+            <li><a href="{% url 'chi_tiet_mon_an' slug=mon_an.slug %}">{{ mon_an.ten_mon_an }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>Các loại món ăn</h2>
+    <ul>
+        {% for loai in loai_mon_an %}
+            <li><a href="{% url 'mon_an_theo_loai' slug=loai.slug %}">{{ loai.ten_loai }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

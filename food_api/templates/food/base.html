@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trang web ẩm thực Hàn Quốc</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'home' %}">Trang chủ</a> |
+            <a href="#">Các vùng miền</a> |
+            <a href="#">Tìm kiếm</a>
+        </nav>
+    </header>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Trang web ẩm thực Hàn Quốc</p>
+    </footer>
+</body>
+</html>

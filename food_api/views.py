@@ -1,3 +1,29 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import MonAn, LoaiMonAn
 
-# Create your views here.
+def home(request):
+    mon_an_noi_bat = MonAn.objects.all().order_by('-luot_xem')[:8] # Lấy 8 món ăn có lượt xem cao nhất
+    loai_mon_an = LoaiMonAn.objects.all()
+    context = {
+        'mon_an_noi_bat': mon_an_noi_bat,
+        'loai_mon_an': loai_mon_an,
+    }
+    return render(request, 'food/home.html', context)
+
+def mon_an_theo_loai(request, slug):
+    loai = get_object_or_404(LoaiMonAn, slug=slug)
+    mon_ans = loai.mon_ans.all() # Truy cập các món ăn liên quan thông qua related_name
+    context = {
+        'loai': loai,
+        'mon_ans': mon_ans,
+    }
+    return render(request, 'food/mon_an_theo_loai.html', context)
+
+def chi_tiet_mon_an(request, slug):
+    mon_an = get_object_or_404(MonAn, slug=slug)
+    mon_an.luot_xem += 1
+    mon_an.save()
+    context = {
+        'mon_an': mon_an,
+    }
+    return render(request, 'food/chi_tiet_mon_an.html', context)
