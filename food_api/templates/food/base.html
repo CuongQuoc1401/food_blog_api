@@ -1,24 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-    <title>Trang web ẩm thực Hàn Quốc</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Food Blog{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_head %}{% endblock %}
 </head>
 <body>
     <header>
+        <div class="logo">Your Blog Name</div>
         <nav>
-            <a href="{% url 'home' %}">Trang chủ</a> |
-            <a href="#">Các vùng miền</a> |
-            <a href="#">Tìm kiếm</a>
+            <ul>
+                <li><a href="/">Trang chủ</a></li>
+                <li><a href="/loai-mon-an/">Loại món ăn</a></li>
+                <li><a href="/vung-mien/">Vùng miền</a></li>
+                </ul>
         </nav>
     </header>
 
-    <div class="content">
-        {% block content %}
-        {% endblock %}
+    <div class="container">
+        <main class="content">
+            {% block content %}
+            {% endblock %}
+        </main>
+        <aside class="sidebar">
+            {% block sidebar %}
+                <div class="widget">
+                    <h3>Tìm kiếm</h3>
+                    <input type="text" placeholder="Tìm kiếm...">
+                </div>
+                <div class="widget">
+                    <h3>Danh mục</h3>
+                    <ul>
+                        {% for loai in loai_mon_ans %}
+                            <li><a href="#">{{ loai.ten_loai }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                </aside>
     </div>
 
     <footer>
-        <p>&copy; 2025 Trang web ẩm thực Hàn Quốc</p>
+        <p>&copy; 2025 Food Blog. All rights reserved.</p>
     </footer>
+    {% block extra_scripts %}{% endblock %}
 </body>
 </html>

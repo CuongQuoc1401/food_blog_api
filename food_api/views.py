@@ -27,3 +27,19 @@ def chi_tiet_mon_an(request, slug):
         'mon_an': mon_an,
     }
     return render(request, 'food/chi_tiet_mon_an.html', context)
+
+def monan_list(request):
+    monan_list = MonAn.objects.all()
+    loai_mon_ans = LoaiMonAn.objects.all()
+    context = {
+        'monan_list': monan_list,
+        'loai_mon_ans': loai_mon_ans,
+    }
+    return render(request, 'monan_list.html', context)
+
+def monan_detail(request, slug):
+    mon_an = MonAn.objects.get(slug=slug)
+    context = {
+        'mon_an': mon_an,
+    }
+    return render(request, 'monan_detail.html', context)

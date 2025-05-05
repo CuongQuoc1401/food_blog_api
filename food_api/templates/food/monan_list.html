@@ -1,0 +1,48 @@
+{% extends 'food/base.html' %}
+{% load static %}
+
+{% block title %}Danh sách món ăn{% endblock %}
+
+{% block content %}
+    <h1>Danh sách món ăn</h1>
+    <div class="blog-list">
+        {% for mon_an in monan_list %}
+            <div class="blog-item">
+                <a href="{% url 'monan_detail' mon_an.slug %}">
+                    {% if mon_an.hinh_anh %}
+                        <img src="{{ mon_an.hinh_anh }}" alt="{{ mon_an.ten_mon_an }}">
+                    {% else %}
+                        <img src="{% static 'images/default.jpg' %}" alt="No Image">
+                    {% endif %}
+                    <h2>{{ mon_an.ten_mon_an }}</h2>
+                    <p class="mo-ta">{{ mon_an.mo_ta_ngan }}</p>
+                    <p class="tags">
+                        {% for tag in mon_an.tags %}
+                            <span>{{ tag }}</span>
+                        {% endfor %}
+                    </p>
+                </a>
+            </div>
+        {% empty %}
+            <p>Không có món ăn nào.</p>
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+        {# Thêm phân trang nếu cần #}
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    {{ block.super }} {# Kế thừa nội dung sidebar từ base.html #}
+    <div class="widget">
+        <h3>Bài viết nổi bật</h3>
+        <ul>
+            {# Lấy và hiển thị các bài viết nổi bật #}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block extra_scripts %}
+    {# Thêm các script riêng cho trang này #}
+{% endblock %}

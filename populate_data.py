@@ -236,8 +236,10 @@ def populate_database(num_mon_an=40):
             mon_an_name = ten_mon_an[i]
             mon_an_name_en = ten_mon_an_en[i]
             # Chọn ngẫu nhiên một loại món ăn và vùng miền từ danh sách đã lấy
-            loai_mon_an_obj = random.choice(loai_mon_ans)
-            vung_mien_obj = random.choice(vung_miens) if random.random() < 0.8 else None #80% món ăn có vùng miền
+            # loai_mon_an_obj = random.choice(loai_mon_ans)
+            # vung_mien_obj = random.choice(vung_miens) if random.random() < 0.8 else None #80% món ăn có vùng miền
+            loai_mon_an_obj = None
+            vung_mien_obj = None
             mo_ta_ngan = mo_ta_ngan_mon_an[i]
             nguyen_lieu = nguyen_lieu_mon_an[i]
             cach_lam = cach_lam_mon_an[i]
