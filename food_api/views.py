@@ -17,7 +17,7 @@ def mon_an_theo_loai(request, slug):
         'loai': loai,
         'mon_ans': mon_ans,
     }
-    return render(request, 'food/mon_an_theo_loai.html', context)
+    return render(request, 'food_api/mon_an_theo_loai.html', context)
 
 def chi_tiet_mon_an(request, slug):
     mon_an = get_object_or_404(MonAn, slug=slug)
@@ -26,7 +26,7 @@ def chi_tiet_mon_an(request, slug):
     context = {
         'mon_an': mon_an,
     }
-    return render(request, 'food/chi_tiet_mon_an.html', context)
+    return render(request, 'food_api/chi_tiet_mon_an.html', context)
 
 def monan_list(request):
     monan_list = MonAn.objects.all()
@@ -35,11 +35,11 @@ def monan_list(request):
         'monan_list': monan_list,
         'loai_mon_ans': loai_mon_ans,
     }
-    return render(request, 'monan_list.html', context)
+    return render(request, 'food_api/monan_list.html', context)
 
 def monan_detail(request, slug):
     mon_an = MonAn.objects.get(slug=slug)
     context = {
         'mon_an': mon_an,
     }
-    return render(request, 'monan_detail.html', context)
+    return render(request, 'food_api/monan_detail.html', context)
